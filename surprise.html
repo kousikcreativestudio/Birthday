@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Surprise 🎁</title>
+<style>
+
+body {
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+}
+
+img {
+  width: 300px;
+  margin-top: 50px;
+  border: 5px solid cyan;
+  box-shadow: 0 0 30px cyan;
+}
+
+#text {
+  margin-top: 20px;
+  font-size: 20px;
+  text-shadow: 0 0 10px pink;
+}
+
+</style>
+</head>
+
+<body>
+
+<img src="photo.jpg" id="photo">
+
+<div id="text"></div>
+
+<h2 style="margin-top:30px;">✨ Wishes from your brother KOUSIK ✨</h2>
+
+<script>
+
+let message = "You are the most special person in my life. Stay happy always ❤️";
+let i = 0;
+
+function typeEffect() {
+  if (i < message.length) {
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeEffect, 50);
+  }
+}
+
+typeEffect();
+
+</script>
+
+</body>
+</html>
