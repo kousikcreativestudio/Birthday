@@ -152,3 +152,7 @@ function startStory() {
 document.getElementById("btn").onclick = () => {
   window.location.href = "surprise.html";
 };
+
+document.body.addEventListener("click", () => {
+  document.getElementById("music").play();
+});
