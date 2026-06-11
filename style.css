@@ -14,6 +14,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .glow-text {
@@ -43,7 +44,7 @@ body {
   height: 30px;
   background: pink;
   position: absolute;
-  animation: fly 10s infinite linear;
+  animation: fly 8s infinite linear;
   border-radius: 50%;
   box-shadow: 0 0 20px pink;
 }
@@ -78,17 +79,16 @@ body {
 #queen {
   position: absolute;
   bottom: 20%;
-  left: -100px;
+  left: -150px;
   font-size: 60px;
   transition: 3s;
 }
 
-/* FIREWORKS */
+/* FIREWORK */
 #fireworks {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: transparent;
 }
 
 /* FINAL TEXT */
@@ -112,93 +112,4 @@ body {
   padding: 15px 25px;
   font-size: 18px;
   display: none;
-}
-
-body {
-  margin: 0;
-  overflow: hidden;
-  font-family: 'Poppins', sans-serif;
-  background: black;
-}
-
-/* INTRO */
-#intro {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-
-.cinema-text {
-  font-size: 3rem;
-  color: white;
-  text-shadow: 0 0 40px cyan, 0 0 80px blue;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { opacity: 0.6; }
-  to { opacity: 1; }
-}
-
-/* CANVAS */
-#scene {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-}
-
-/* OVERLAY */
-#overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* CAKE */
-#cake {
-  position: absolute;
-  bottom: 25%;
-  left: 50%;
-  transform: translateX(-50%) scale(0);
-  font-size: 80px;
-  transition: 2s;
-}
-
-/* QUEEN */
-#queen {
-  position: absolute;
-  bottom: 25%;
-  left: -200px;
-  font-size: 90px;
-  transition: 3s;
-}
-
-/* FINAL TEXT */
-#finalText {
-  position: absolute;
-  top: 10%;
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-size: 2.5rem;
-  opacity: 0;
-  text-shadow: 0 0 30px gold;
-}
-
-/* BUTTON */
-#btn {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 15px 30px;
-  font-size: 20px;
-  display: none;
-  pointer-events: auto;
 }
