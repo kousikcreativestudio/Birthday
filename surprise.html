@@ -111,3 +111,56 @@ type();
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Surprise 💖</title>
+
+<style>
+body {
+  background: black;
+  color: white;
+  text-align: center;
+}
+
+img {
+  width: 300px;
+  margin-top: 50px;
+  border: 5px solid pink;
+  box-shadow: 0 0 40px pink;
+}
+
+#msg {
+  margin-top: 20px;
+  font-size: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ONLINE IMAGE (CHANGE LATER) -->
+<img src="https://picsum.photos/300/400">
+
+<div id="msg"></div>
+
+<h2>✨ Wishes from your brother KOUSIK ✨</h2>
+
+<script>
+let text = "You are my world Sahitya 💙 Stay happy forever!";
+let i = 0;
+
+function type() {
+  if(i < text.length){
+    document.getElementById("msg").innerHTML += text[i];
+    i++;
+    setTimeout(type, 50);
+  }
+}
+
+type();
+</script>
+
+</body>
+</html>
