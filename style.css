@@ -129,3 +129,16 @@ body {
 #fireworks {
   z-index: 2;
 }
+
+#garden {
+  filter: blur(3px) brightness(0.7);
+}
+
+.butterfly {
+  top: 80%;
+  left: 10%;
+}
+
+#cake, #queen {
+  opacity: 0;
+}
