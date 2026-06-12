@@ -100,3 +100,41 @@ setTimeout(() => {
 document.getElementById("btn").onclick = () => {
   window.location.href = "surprise.html";
 };
+
+function createFirework() {
+  let particles = [];
+
+  for (let i = 0; i < 50; i++) {
+    let div = document.createElement("div");
+    div.style.position = "absolute";
+    div.style.width = "4px";
+    div.style.height = "4px";
+    div.style.background = "hsl(" + Math.random()*360 + ",100%,50%)";
+    div.style.borderRadius = "50%";
+
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+
+    document.body.appendChild(div);
+
+    let angle = Math.random() * Math.PI * 2;
+    let speed = Math.random() * 5 + 2;
+
+    particles.push({div, x, y, angle, speed});
+  }
+
+  let interval = setInterval(() => {
+    particles.forEach(p => {
+      p.x += Math.cos(p.angle) * p.speed;
+      p.y += Math.sin(p.angle) * p.speed;
+      p.div.style.left = p.x + "px";
+      p.div.style.top = p.y + "px";
+      p.speed *= 0.95;
+    });
+  }, 30);
+
+  setTimeout(() => {
+    particles.forEach(p => p.div.remove());
+    clearInterval(interval);
+  }, 1000);
+}
