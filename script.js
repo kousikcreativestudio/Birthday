@@ -1,86 +1,98 @@
-// WAIT DOM LOAD
-window.onload = function () {
+let scene, camera, renderer, particles = [];
 
-  // INTRO
-  setTimeout(() => {
-    document.getElementById("intro").style.display = "none";
-    document.getElementById("mainScene").style.display = "block";
+// INIT 3D
+function init() {
+  scene = new THREE.Scene();
 
-    startStory();
-  }, 3000);
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+  camera.position.z = 5;
 
-};
+  renderer = new THREE.WebGLRenderer({
+    canvas: document.getElementById("scene"),
+    alpha: true
+  });
 
+  renderer.setSize(window.innerWidth, window.innerHeight);
 
+  createParticles();
+  animate();
+}
+
+// PARTICLES
+function createParticles() {
+  for (let i = 0; i < 120; i++) {
+    let geo = new THREE.SphereGeometry(0.03);
+    let mat = new THREE.MeshBasicMaterial({color: 0xff66ff});
+    let p = new THREE.Mesh(geo, mat);
+
+    p.position.x = (Math.random() - 0.5) * 10;
+    p.position.y = (Math.random() - 0.5) * 10;
+
+    scene.add(p);
+    particles.push(p);
+  }
+}
+
+// ANIMATION
+function animate() {
+  requestAnimationFrame(animate);
+
+  particles.forEach(p => {
+    p.position.y += 0.01;
+    if (p.position.y > 5) p.position.y = -5;
+  });
+
+  renderer.render(scene, camera);
+}
+
+// START
+setTimeout(() => {
+  document.getElementById("intro").style.display = "none";
+  init();
+  startStory();
+}, 3000);
+
+// STORY
 function startStory() {
 
   let music = document.getElementById("music");
 
-  // play music on first click (browser rule)
   document.body.addEventListener("click", () => {
     music.play();
-  }, { once: true });
+  });
 
-
-  // Queen enters
+  // CAKE
   setTimeout(() => {
-    document.getElementById("queen").style.left = "40%";
+    document.getElementById("cake").style.transform = "translateX(-50%) scale(1)";
   }, 2000);
 
-  // Blow candles
+  // QUEEN
   setTimeout(() => {
-    document.getElementById("candles").innerHTML = "";
-  }, 5000);
+    document.getElementById("queen").style.left = "40%";
+  }, 4000);
 
-  // Fireworks
+  // CANDLE OFF
   setTimeout(() => {
-    startFireworks();
+    document.getElementById("candle").src = "https://i.ibb.co/r28ybz1w/candle-off.png";
   }, 6000);
 
-  // Final text
+  // FIREWORKS
   setTimeout(() => {
-    document.getElementById("finalText").style.display = "block";
-  }, 8000);
+    document.getElementById("fireworks").style.display = "block";
+  }, 7000);
 
-  // Button show
+  // TEXT
   setTimeout(() => {
-    document.getElementById("surpriseBtn").style.display = "block";
-  }, 10000);
+    document.getElementById("finalText").style.opacity = "1";
+  }, 9000);
+
+  // BUTTON
+  setTimeout(() => {
+    document.getElementById("btn").style.display = "block";
+  }, 11000);
 }
-
-
-// FIREWORK
-function startFireworks() {
-
-  let container = document.getElementById("fireworks");
-
-  setInterval(() => {
-
-    let spark = document.createElement("div");
-
-    spark.style.position = "absolute";
-    spark.style.width = "6px";
-    spark.style.height = "6px";
-    spark.style.background = "yellow";
-    spark.style.borderRadius = "50%";
-
-    spark.style.top = Math.random() * 100 + "%";
-    spark.style.left = Math.random() * 100 + "%";
-
-    container.appendChild(spark);
-
-    setTimeout(() => spark.remove(), 1000);
-
-  }, 80);
-}
-
 
 // BUTTON
-document.addEventListener("click", function () {
-  let btn = document.getElementById("surpriseBtn");
-  if (btn) {
-    btn.onclick = () => {
-      window.location.href = "surprise.html";
-    };
-  }
-});
+document.getElementById("btn").onclick = () => {
+  window.location.href = "surprise.html";
+};
