@@ -3,49 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday Sahitya 💙</title>
 
 <link rel="stylesheet" href="style.css">
 
+<!-- THREE JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 </head>
 
 <body>
 
+<!-- 🎬 INTRO SCREEN -->
 <div id="intro">
   <h1 class="cinema-text">✨ Happy Birthday Sahitya ✨</h1>
 </div>
 
+<!-- 🎆 3D CANVAS -->
 <canvas id="scene"></canvas>
 
+<!-- 🌸 MAIN OVERLAY -->
 <div id="overlay">
 
-  <img id="garden" src="https://i.ibb.co/JWs0BtWM/garden.png">
+  <!-- 🌿 BACKGROUND -->
+  <img id="garden"
+    src="https://i.ibb.co/JWs0BtWM/garden.png"
+    alt="garden">
 
-  <!-- BUTTERFLIES -->
-  <img class="butterfly" src="https://i.ibb.co/Vc8nJcr6/butterfly.png">
-  <img class="butterfly glow" src="https://i.ibb.co/35vYHbp1/butterfly-glow.png">
+  <!-- 🦋 BUTTERFLIES CONTAINER -->
+  <div id="butterflies">
+    <img class="butterfly"
+      src="https://i.ibb.co/Vc8nJcr6/butterfly.png"
+      alt="butterfly">
 
-  <!-- CAKE -->
-  <img id="cake" src="https://i.ibb.co/NnH5qKKj/cake-full.png">
+    <img class="butterfly glow"
+      src="https://i.ibb.co/35vYHbp1/butterfly-glow.png"
+      alt="glow butterfly">
+  </div>
 
-  <!-- CANDLE -->
-  <img id="candle" src="https://i.ibb.co/fYhv8rgL/candle-on.png">
+  <!-- 🎂 CAKE -->
+  <img id="cake"
+    src="https://i.ibb.co/NnH5qKKj/cake-full.png"
+    alt="cake">
 
-  <!-- QUEEN -->
+  <!-- 🕯️ CANDLE -->
+  <img id="candle"
+    src="https://i.ibb.co/fYhv8rgL/candle-on.png"
+    alt="candle">
+
+  <!-- 👸 QUEEN -->
   <div id="queen">👸</div>
 
-  <!-- FIREWORKS -->
-  <img id="fireworks" src="https://i.ibb.co/DPWsDDtT/fireworks.png">
-
+  <!-- ✨ FINAL TEXT -->
   <h1 id="finalText">✨ Happy Birthday Sahitya ✨</h1>
 
+  <!-- 🎁 BUTTON -->
   <button id="btn">🎁 Surprise</button>
 
 </div>
 
-<audio id="music" src="https://www.image2url.com/r2/default/audio/1781244144277-fcf11544-7e22-49af-b864-ba3ad4b72bff.mp3"></audio>
+<!-- 🎵 MUSIC -->
+<audio id="music"
+  src="https://www.image2url.com/r2/default/audio/1781244144277-fcf11544-7e22-49af-b864-ba3ad4b72bff.mp3"
+  preload="auto"
+  playsinline>
+</audio>
 
+<!-- SCRIPT -->
 <script src="script.js"></script>
+
 </body>
 </html>
