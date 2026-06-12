@@ -56,24 +56,69 @@ setTimeout(() => {
 function startStory() {
 
   let music = document.getElementById("music");
+  document.body.addEventListener("click", () => music.play());
 
-  document.body.addEventListener("click", () => {
-    music.play();
-  });
+  setTimeout(buildCake, 2000);
+  setTimeout(moveQueen, 5000);
+
+  setTimeout(() => {
+    document.getElementById("candle").src =
+      "https://i.ibb.co/r28ybz1w/candle-off.png";
+  }, 7000);
+
+  setTimeout(() => {
+    setInterval(createFirework, 500);
+  }, 8000);
+
+  setTimeout(() => {
+    document.getElementById("finalText").style.opacity = "1";
+  }, 10000);
+
+  setTimeout(() => {
+    document.getElementById("btn").style.display = "block";
+  }, 12000);
+
+  glowEffect();
+}
 
 // CAKE
-setTimeout(() => {
+function buildCake() {
   let cake = document.getElementById("cake");
-  cake.style.transform = "translateX(-50%) scale(1)";
-  cake.style.opacity = "1";
-}, 2000);
+
+  let layers = [
+    "https://i.ibb.co/vC77KfXQ/cake-slice-bottom.png",
+    "https://i.ibb.co/4w1MRHqH/cake-slice-Middle.png",
+    "https://i.ibb.co/YT2W8dbz/cake-slice-top.png"
+  ];
+
+  let i = 0;
+
+  let interval = setInterval(() => {
+    cake.src = layers[i];
+    cake.style.opacity = "1";
+    i++;
+
+    if (i >= layers.length) {
+      clearInterval(interval);
+      setTimeout(() => {
+        cake.src = "https://i.ibb.co/NnH5qKKj/cake-full.png";
+      }, 1000);
+    }
+  }, 1000);
+}
 
 // QUEEN
-setTimeout(() => {
+function moveQueen() {
   let queen = document.getElementById("queen");
-  queen.style.left = "40%";
-  queen.style.opacity = "1";
-}, 4000);
+  let pos = -50;
+
+  let walk = setInterval(() => {
+    pos += 1;
+    queen.style.left = pos + "%";
+
+    if (pos >= 40) clearInterval(walk);
+  }, 20);
+}
 
   // CANDLE OFF
   setTimeout(() => {
@@ -137,4 +182,14 @@ function createFirework() {
     particles.forEach(p => p.div.remove());
     clearInterval(interval);
   }, 1000);
+}
+
+function glowEffect() {
+  let intensity = 0;
+
+  setInterval(() => {
+    intensity = Math.sin(Date.now() * 0.003) * 20 + 30;
+    document.body.style.boxShadow =
+      "inset 0 0 " + intensity + "px rgba(255,200,150,0.3)";
+  }, 30);
 }
