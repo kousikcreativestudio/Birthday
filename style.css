@@ -10,17 +10,17 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: black;
   z-index: 10;
 }
 
 .cinema-text {
-  font-size: 3rem;
+  font-size: clamp(1.5rem, 5vw, 3rem);
   color: white;
-  text-shadow: 0 0 40px cyan, 0 0 80px blue;
+  text-align: center;
 }
 
 /* CANVAS */
@@ -42,103 +42,54 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.4;
-}
-
-/* BUTTERFLIES */
-.butterfly {
-  position: absolute;
-  width: 60px;
-  animation: fly 12s linear infinite;
-}
-
-.glow {
-  filter: drop-shadow(0 0 20px pink);
-}
-
-@keyframes fly {
-  0% { transform: translateY(100vh); }
-  100% { transform: translateY(-100vh); }
+  filter: blur(4px) brightness(0.6);
 }
 
 /* CAKE */
 #cake {
   position: absolute;
-  bottom: 20%;
+  bottom: 18%;
   left: 50%;
-  transform: translateX(-50%) scale(0);
-  width: 220px;
-  transition: 2s;
+  transform: translateX(-50%);
+  width: clamp(120px, 25vw, 220px);
+  opacity: 0;
 }
 
 /* CANDLE */
 #candle {
   position: absolute;
-  bottom: 35%;
+  bottom: 32%;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
+  width: clamp(25px, 6vw, 50px);
 }
 
 /* QUEEN */
 #queen {
   position: absolute;
-  bottom: 20%;
-  left: -200px;
-  font-size: 80px;
-  transition: 3s;
-}
-
-/* FIREWORKS */
-#fireworks {
-  position: absolute;
-  width: 60%;   /* was 100% ❌ */
-  left: 20%;
-  top: 10%;
-  display: none;
-  opacity: 0.8;
+  bottom: 18%;
+  left: -50%;
+  font-size: clamp(40px, 10vw, 80px);
 }
 
 /* FINAL TEXT */
 #finalText {
   position: absolute;
-  top: 10%;
+  top: 8%;
   width: 100%;
   text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   color: white;
-  font-size: 2.5rem;
   opacity: 0;
-  text-shadow: 0 0 30px gold;
 }
 
 /* BUTTON */
 #btn {
   position: absolute;
-  bottom: 10%;
+  bottom: 8%;
   left: 50%;
   transform: translateX(-50%);
-  padding: 15px 30px;
-  font-size: 20px;
+  padding: 12px 25px;
+  font-size: 18px;
   display: none;
-}
-
-#cake {
-  z-index: 5;
-}
-
-#fireworks {
-  z-index: 2;
-}
-
-#garden {
-  filter: blur(3px) brightness(0.7);
-}
-
-.butterfly {
-  top: 80%;
-  left: 10%;
-}
-
-#cake, #queen {
-  opacity: 0;
 }
