@@ -1,8 +1,8 @@
 body {
   margin: 0;
   overflow: hidden;
-  font-family: Arial;
   background: black;
+  font-family: sans-serif;
 }
 
 /* INTRO */
@@ -17,36 +17,43 @@ body {
   z-index: 10;
 }
 
-.glow-text {
+.cinema-text {
+  font-size: 3rem;
   color: white;
-  font-size: 2.5rem;
-  text-shadow: 0 0 20px cyan, 0 0 40px blue;
-  animation: glow 1s infinite alternate;
+  text-shadow: 0 0 40px cyan, 0 0 80px blue;
 }
 
-@keyframes glow {
-  from { text-shadow: 0 0 10px white; }
-  to { text-shadow: 0 0 30px cyan; }
-}
-
-/* MAIN */
-#mainScene {
-  display: none;
+/* CANVAS */
+#scene {
+  position: fixed;
   width: 100%;
-  height: 100vh;
-  background: radial-gradient(circle, #0a2a0a, #000);
-  position: relative;
+  height: 100%;
+}
+
+/* OVERLAY */
+#overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* BACKGROUND */
+#garden {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
 }
 
 /* BUTTERFLIES */
 .butterfly {
-  width: 30px;
-  height: 30px;
-  background: pink;
   position: absolute;
-  animation: fly 8s infinite linear;
-  border-radius: 50%;
-  box-shadow: 0 0 20px pink;
+  width: 60px;
+  animation: fly 12s linear infinite;
+}
+
+.glow {
+  filter: drop-shadow(0 0 20px pink);
 }
 
 @keyframes fly {
@@ -59,36 +66,35 @@ body {
   position: absolute;
   bottom: 20%;
   left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 220px;
+  transition: 2s;
+}
+
+/* CANDLE */
+#candle {
+  position: absolute;
+  bottom: 35%;
+  left: 50%;
   transform: translateX(-50%);
-}
-
-.layer {
-  width: 150px;
-  height: 40px;
-  background: pink;
-  margin: 5px;
-  border-radius: 10px;
-}
-
-#candles {
-  text-align: center;
-  font-size: 30px;
+  width: 50px;
 }
 
 /* QUEEN */
 #queen {
   position: absolute;
   bottom: 20%;
-  left: -150px;
-  font-size: 60px;
+  left: -200px;
+  font-size: 80px;
   transition: 3s;
 }
 
-/* FIREWORK */
+/* FIREWORKS */
 #fireworks {
   position: absolute;
   width: 100%;
-  height: 100%;
+  top: 0;
+  display: none;
 }
 
 /* FINAL TEXT */
@@ -98,18 +104,18 @@ body {
   width: 100%;
   text-align: center;
   color: white;
-  font-size: 2rem;
-  display: none;
-  text-shadow: 0 0 20px gold;
+  font-size: 2.5rem;
+  opacity: 0;
+  text-shadow: 0 0 30px gold;
 }
 
 /* BUTTON */
-#surpriseBtn {
+#btn {
   position: absolute;
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
-  padding: 15px 25px;
-  font-size: 18px;
+  padding: 15px 30px;
+  font-size: 20px;
   display: none;
 }
