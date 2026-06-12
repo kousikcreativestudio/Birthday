@@ -22,17 +22,17 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle, rgba(255,100,200,0.15), black 70%);
-  animation: glowBG 6s infinite alternate;
+  background: radial-gradient(circle, rgba(255,100,200,0.2), black 70%);
+  animation: bgPulse 6s infinite alternate;
   z-index: -1;
 }
 
-@keyframes glowBG {
-  0% { opacity: 0.6; }
-  100% { opacity: 1; }
+@keyframes bgPulse {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
 }
 
-/* 📦 CONTAINER */
+/* CONTAINER */
 .container {
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@ body::before {
   padding: 20px;
 }
 
-/* 🖼 IMAGE */
+/* IMAGE */
 img {
   width: clamp(200px, 60vw, 320px);
   border: 5px solid pink;
@@ -52,34 +52,79 @@ img {
   animation: float 4s ease-in-out infinite;
 }
 
-/* FLOAT ANIMATION */
+/* FLOAT */
 @keyframes float {
   0% { transform: translateY(0); }
   50% { transform: translateY(-15px); }
   100% { transform: translateY(0); }
 }
 
-/* 💬 MESSAGE */
+/* MESSAGE */
 #msg {
   margin-top: 25px;
   font-size: clamp(18px, 4vw, 24px);
   max-width: 90%;
   line-height: 1.5;
-  text-shadow: 0 0 15px rgba(255,150,200,0.8);
+  text-shadow: 0 0 15px rgba(255,150,200,0.9);
 }
 
-/* ✨ TITLE */
+/* TITLE */
 h2 {
   margin-top: 30px;
   font-size: clamp(20px, 5vw, 28px);
   color: #ffb6f0;
   text-shadow: 0 0 20px pink;
-  animation: fadeIn 3s ease forwards;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ❤️ HEART PARTICLES */
+.heart {
+  position: fixed;
+  width: 15px;
+  height: 15px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: rise 4s linear forwards;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -8px;
+  left: 0;
+}
+
+.heart::after {
+  left: -8px;
+  top: 0;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-600px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* TAP TEXT */
+#tap {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.7;
 }
 
 </style>
@@ -89,33 +134,70 @@ h2 {
 
 <div class="container">
 
-  <!-- 💖 PHOTO (REPLACE WITH YOUR IMAGE) -->
-  <img src="https://picsum.photos/300/400" id="photo">
+  <!-- 💖 YOUR PHOTO -->
+  <img src="https://picsum.photos/300/400">
 
   <!-- 💬 MESSAGE -->
   <div id="msg"></div>
 
-  <!-- ✨ SIGNATURE -->
+  <!-- ✨ SIGN -->
   <h2>✨ Wishes from your brother KOUSIK ✨</h2>
 
 </div>
 
+<div id="tap">Tap anywhere 💖</div>
+
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+  <source src="https://www.image2url.com/r2/default/audio/1781244144277-fcf11544-7e22-49af-b864-ba3ad4b72bff.mp3">
+</audio>
+
 <script>
 
-// 🎬 TYPEWRITER EFFECT (SMOOTH)
+// 🎵 AUTO MUSIC FIX (MOBILE SAFE)
+const music = document.getElementById("music");
+
+function startMusic() {
+  music.play();
+  document.getElementById("tap").style.display = "none";
+}
+
+// works on mobile tap
+document.body.addEventListener("click", startMusic, { once: true });
+
+
+// 💬 TYPEWRITER
 const text = "Happy birthday, sister! May your day be filled with laughter, love, and plenty of cake ❤️";
 let i = 0;
 
 function type() {
   if (i < text.length) {
-    document.getElementById("msg").innerHTML += text.charAt(i);
+    document.getElementById("msg").innerHTML += text[i];
     i++;
     setTimeout(type, 40);
   }
 }
 
-// start typing after small delay
 setTimeout(type, 800);
+
+
+// ❤️ HEART PARTICLES
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.bottom = "0px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 4000);
+}
+
+// spawn hearts
+setInterval(createHeart, 300);
 
 </script>
 
