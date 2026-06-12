@@ -92,9 +92,11 @@ body {
 /* FIREWORKS */
 #fireworks {
   position: absolute;
-  width: 100%;
-  top: 0;
+  width: 60%;   /* was 100% ❌ */
+  left: 20%;
+  top: 10%;
   display: none;
+  opacity: 0.8;
 }
 
 /* FINAL TEXT */
