@@ -61,15 +61,19 @@ function startStory() {
     music.play();
   });
 
-  // CAKE
-  setTimeout(() => {
-    document.getElementById("cake").style.transform = "translateX(-50%) scale(1)";
-  }, 2000);
+// CAKE
+setTimeout(() => {
+  let cake = document.getElementById("cake");
+  cake.style.transform = "translateX(-50%) scale(1)";
+  cake.style.opacity = "1";
+}, 2000);
 
-  // QUEEN
-  setTimeout(() => {
-    document.getElementById("queen").style.left = "40%";
-  }, 4000);
+// QUEEN
+setTimeout(() => {
+  let queen = document.getElementById("queen");
+  queen.style.left = "40%";
+  queen.style.opacity = "1";
+}, 4000);
 
   // CANDLE OFF
   setTimeout(() => {
