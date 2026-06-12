@@ -3,50 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Sahitya 🎂</title>
+<title>Happy Birthday Sahitya 💙</title>
 
 <link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
 
-<!-- INTRO -->
 <div id="intro">
-  <h1 class="glow-text">✨ Happy Birthday Sahitya ✨</h1>
+  <h1 class="cinema-text">✨ Happy Birthday Sahitya ✨</h1>
 </div>
 
-<!-- MAIN -->
-<div id="mainScene">
+<canvas id="scene"></canvas>
+
+<div id="overlay">
+
+  <img id="garden" src="https://i.ibb.co/JWs0BtWM/garden.png">
 
   <!-- BUTTERFLIES -->
-  <div class="butterfly"></div>
-  <div class="butterfly"></div>
-  <div class="butterfly"></div>
+  <img class="butterfly" src="https://i.ibb.co/Vc8nJcr6/butterfly.png">
+  <img class="butterfly glow" src="https://i.ibb.co/35vYHbp1/butterfly-glow.png">
 
   <!-- CAKE -->
-  <div id="cake">
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div id="candles">🕯🕯🕯</div>
-  </div>
+  <img id="cake" src="https://i.ibb.co/NnH5qKKj/cake-full.png">
+
+  <!-- CANDLE -->
+  <img id="candle" src="https://i.ibb.co/fYhv8rgL/candle-on.png">
 
   <!-- QUEEN -->
   <div id="queen">👸</div>
 
-  <!-- FIREWORK -->
-  <div id="fireworks"></div>
+  <!-- FIREWORKS -->
+  <img id="fireworks" src="https://i.ibb.co/DPWsDDtT/fireworks.png">
 
-  <!-- FINAL TEXT -->
   <h1 id="finalText">✨ Happy Birthday Sahitya ✨</h1>
 
-  <!-- BUTTON -->
-  <button id="surpriseBtn">🎁 Surprise</button>
+  <button id="btn">🎁 Surprise</button>
 
 </div>
 
-<!-- MUSIC -->
-<audio id="music" src="assets/music.mp3"></audio>
+<audio id="music" src="https://www.image2url.com/r2/default/audio/1781244144277-fcf11544-7e22-49af-b864-ba3ad4b72bff.mp3"></audio>
 
 <script src="script.js"></script>
 </body>
