@@ -1,51 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Surprise 💖</title>
 
 <style>
+
+/* RESET */
 body {
+  margin: 0;
   background: black;
   color: white;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+/* 🌌 CINEMATIC BACKGROUND */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,100,200,0.15), black 70%);
+  animation: glowBG 6s infinite alternate;
+  z-index: -1;
+}
+
+@keyframes glowBG {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* 📦 CONTAINER */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   text-align: center;
+  padding: 20px;
 }
 
+/* 🖼 IMAGE */
 img {
-  width: 300px;
-  margin-top: 50px;
+  width: clamp(200px, 60vw, 320px);
   border: 5px solid pink;
+  border-radius: 15px;
   box-shadow: 0 0 40px pink;
+  animation: float 4s ease-in-out infinite;
 }
 
-#msg {
-  margin-top: 20px;
-  font-size: 22px;
+/* FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
 }
+
+/* 💬 MESSAGE */
+#msg {
+  margin-top: 25px;
+  font-size: clamp(18px, 4vw, 24px);
+  max-width: 90%;
+  line-height: 1.5;
+  text-shadow: 0 0 15px rgba(255,150,200,0.8);
+}
+
+/* ✨ TITLE */
+h2 {
+  margin-top: 30px;
+  font-size: clamp(20px, 5vw, 28px);
+  color: #ffb6f0;
+  text-shadow: 0 0 20px pink;
+  animation: fadeIn 3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- TEMP IMAGE (replace later) -->
-<img src="https://picsum.photos/300/400">
+<div class="container">
 
-<div id="msg"></div>
+  <!-- 💖 PHOTO (REPLACE WITH YOUR IMAGE) -->
+  <img src="https://picsum.photos/300/400" id="photo">
 
-<h2>✨ Wishes from your brother KOUSIK ✨</h2>
+  <!-- 💬 MESSAGE -->
+  <div id="msg"></div>
+
+  <!-- ✨ SIGNATURE -->
+  <h2>✨ Wishes from your brother KOUSIK ✨</h2>
+
+</div>
 
 <script>
-let text = "Happy birthday, sister! May your day be filled with laughter, love, and plenty of cake ❤️";
+
+// 🎬 TYPEWRITER EFFECT (SMOOTH)
+const text = "Happy birthday, sister! May your day be filled with laughter, love, and plenty of cake ❤️";
 let i = 0;
 
 function type() {
-  if(i < text.length){
-    document.getElementById("msg").innerHTML += text[i];
+  if (i < text.length) {
+    document.getElementById("msg").innerHTML += text.charAt(i);
     i++;
-    setTimeout(type, 50);
+    setTimeout(type, 40);
   }
 }
 
-type();
+// start typing after small delay
+setTimeout(type, 800);
+
 </script>
 
 </body>
